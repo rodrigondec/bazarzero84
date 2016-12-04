@@ -1,0 +1,2 @@
+python manage.py runserver || inicia o server
+python manage.py migrate || migra as configurações
