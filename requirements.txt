@@ -1,6 +1,5 @@
 Django==1.10.4
 pycrypto==2.6.1
 pycurl==7.43.0
-python-apt===1.1.0.b1-elementary2-ubuntu16.04.1
 python-prctl==1.1.1
 pyxdg==0.25
