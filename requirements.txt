@@ -1,3 +1,2 @@
 Django==1.10.4
-pycrypto==2.6.1
-pycurl==7.43.0
+MySQL-python==1.2.5
