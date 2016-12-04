@@ -69,17 +69,27 @@ WSGI_APPLICATION = 'bazarzero84.wsgi.application'
 #     }
 # }
 
-PATH_CNF = os.path.join(BASE_DIR, 'mysql.cnf')
+# PATH_CNF = os.path.join(BASE_DIR, 'mysql.cnf')
+# print PATH_CNF
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': PATH_CNF,
+#         },
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': PATH_CNF,
-        },
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'bazarzero84',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
