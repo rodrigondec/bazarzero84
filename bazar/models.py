@@ -11,12 +11,20 @@ class Pessoa(models.Model):
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.nome
 
+class Venda(models.Model):
+	idvenda = models.AutoField(primary_key=True)
+	comprador = models.ForeignKey(Pessoa)
+	data = models.DateField(auto_now=True)
+	
+	def __str__(self):  #For Python 2, use __str__ on Python 3
+		return self.tag
+
 class Produto(models.Model):
 	idproduto = models.AutoField(primary_key=True)
 	tag = models.CharField(max_length=128, unique=True)
 	preco = models.IntegerField(default=0)
-	fornecedor = models.ForeignKey(Pessoa, related_name='fornecedor')
-	comprador = models.ForeignKey(Pessoa, null=True, related_name='comprador')
+	fornecedor = models.ForeignKey(Pessoa)
+	venda = models.ForeignKey(Venda, null=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.tag
