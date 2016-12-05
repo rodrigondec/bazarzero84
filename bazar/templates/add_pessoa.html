@@ -8,7 +8,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     </head>
 
-    <body> 
+    <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,48 +62,28 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        <div class='container-fluid'>
-            <div class='row'>
-                <div class='col-lg-2'>
-                    <ul class="nav nav-tabs nav-stacked">
-                        <li role="presentation"><a href="roupas">Roupas</a></li>
-                        <li role="presentation"><a href="calcados">Calçados</a></li>
-                        <li role="presentation"><a href="aderecos">Adereços</a></li>
-                    </ul>
-                </div>
-                <div class='col-lg-10'>
-                    <div id='roupas'>
-                        
-                    </div>
-                    <div id='calçados'>
-                        
-                    </div>
-                    <div id='adereços'>
-                        
-                    </div>
-                    <h1>Rango says...</h1>
-                    hello world! <strong>{{ boldmessage }}</strong><br />
 
-                    {% if tipo_roupas %}
-                        <ul>
-                            {% for tipo in tipo_roupas %}
-                            <li>{{ tipo.nome }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <strong>Não há nenhum tipo de roupa cadastrado</strong>
-                    {% endif %}
-                    {% load static %}
-                    <img src="{% static 'images/rango.png' %}" alt="My image"/>
-                    <a href="/rango/about/">About</a><br />
-                </div>
-            </div>
+        <h1 class='text-center'>Cadastrar Pessoa</h1>
+        <div class='col-lg-4 col-lg-offset-4'>
+            <form id="pessoa_form" method="post" action="/bazar/add_pessoa/">
+
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+
+                {% for field in form.visible_fields %}
+                    {{ field.errors }}
+                    {{ field.help_text }}
+                    {{ field }}
+                {% endfor %}
+
+                <input class='btn btn-default' type="submit" name="submit" value="Cadastrar Pessoa" />
+            </form>
         </div>
+        
     </body>
-
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </html>

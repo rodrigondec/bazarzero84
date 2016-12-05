@@ -30,7 +30,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/bazar/add_pessoa/">Cadastrar Pessoa</a></li>
+                                <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
                                 <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
@@ -68,7 +68,7 @@
                     <ul class="nav nav-tabs nav-stacked">
                         <li role="presentation"><a href="roupas">Roupas</a></li>
                         <li role="presentation"><a href="calcados">Calçados</a></li>
-                        <li role="presentation"><a href="aderecos">Adereços</a></li>
+                        <li role="presentation" class="active"><a href="aderecos">Adereços</a></li>
                     </ul>
                 </div>
                 <div class='col-lg-10'>
@@ -81,9 +81,8 @@
                     <div id='adereços'>
                         
                     </div>
-                    <h1>Rango says...</h1>
-                    hello world! <strong>{{ boldmessage }}</strong><br />
-
+                    <h1>Adereços</h1>
+                    
                     {% if tipo_roupas %}
                         <ul>
                             {% for tipo in tipo_roupas %}
