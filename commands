@@ -1,2 +1,4 @@
 python manage.py runserver || inicia o server
-python manage.py migrate || migra as configurações
+python manage.py makemigrations || configura as migrações
+python manage.py migrate || realiza as migrações
+pip freeze > requirements.txt || salva as depêndencias
