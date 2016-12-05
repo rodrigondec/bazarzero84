@@ -25,6 +25,15 @@ def populate():
     add_tipo_adereco("anel")
     # add_tipo_adereco("")
 
+    for o in Tipo_roupa.objects.all():
+        print unicode(o)
+
+    for o in Tipo_calcado.objects.all():
+        print unicode(o)
+
+    for o in Tipo_adereco.objects.all():
+        print unicode(o)
+
 def add_tipo_roupa(n):
     o = Tipo_roupa.objects.get_or_create(nome=n)[0]
     o.save()
