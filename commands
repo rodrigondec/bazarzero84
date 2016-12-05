@@ -2,3 +2,6 @@ python manage.py runserver || inicia o server
 python manage.py makemigrations || configura as migrações
 python manage.py migrate || realiza as migrações
 pip freeze > requirements.txt || salva as depêndencias
+
+drop database bazarzero84;
+create database bazarzero84 DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
