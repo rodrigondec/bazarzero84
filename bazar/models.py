@@ -45,8 +45,9 @@ class Tipo_adereco(models.Model):
 class Roupa(models.Model):
 	idroupa = models.AutoField(primary_key=True)
 	tamanho = models.CharField(max_length=2)
-	cor = models.CharField(max_length=20)
-	descricao = models.CharField(max_length=128)
+	# file will be uploaded to MEDIA_ROOT/roupas
+	foto = models.ImageField(upload_to='roupas', null=True)
+	descricao = models.CharField(max_length=128, null=True)
 	produto = models.ForeignKey(Produto)
 	tipo = models.ForeignKey(Tipo_roupa)
 
@@ -56,8 +57,9 @@ class Roupa(models.Model):
 class Calcado(models.Model):
 	idroupa = models.AutoField(primary_key=True)
 	numero = models.CharField(max_length=2)
-	cor = models.CharField(max_length=20)
-	descricao = models.CharField(max_length=128)
+	# file will be uploaded to MEDIA_ROOT/calcados
+	foto = models.ImageField(upload_to='calcados', null=True)
+	descricao = models.CharField(max_length=128, null=True)
 	produto = models.ForeignKey(Produto)
 	tipo = models.ForeignKey(Tipo_calcado)
 
@@ -66,8 +68,9 @@ class Calcado(models.Model):
 
 class Adereco(models.Model):
 	idroupa = models.AutoField(primary_key=True)
-	cor = models.CharField(max_length=20)
-	descricao = models.CharField(max_length=128)
+	# file will be uploaded to MEDIA_ROOT/aderecos
+	foto = models.ImageField(upload_to='aderecos', null=True)
+	descricao = models.CharField(max_length=128, null=True)
 	produto = models.ForeignKey(Produto)
 	tipo = models.ForeignKey(Tipo_adereco)
 
