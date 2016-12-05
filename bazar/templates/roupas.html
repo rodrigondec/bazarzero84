@@ -77,19 +77,45 @@
                             <h1>Roupas</h1>
                         </div>
                     </div>
-                    {% load static %}
-                    {% if roupas %}
+                    <div class='container-fluid'>
+                        <div class='row'>
+                        <div class='col-lg-12'>
+                        {% load static %}
+                        {% if roupas %}
                         {% for roupa in roupas %}
                             <div class='row'>
-                                <div class='col-lg-12'>
-                                    <h5>{{ roupa.descricao }}</h5>
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
                                     <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
                                 </div>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <strong>Não há nenhum tipo de roupa cadastrado</strong>
-                    {% endif %}
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                                <div class='col-lg-2'>
+                                    {{ roupa.descricao }}
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                            </div>   
+                            {% endfor %}
+                        {% else %}
+                            <strong>Não há nenhum tipo de roupa cadastrado</strong>
+                        {% endif %}
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
