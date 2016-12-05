@@ -66,36 +66,30 @@
             <div class='row'>
                 <div class='col-lg-2'>
                     <ul class="nav nav-tabs nav-stacked">
-                        <li role="presentation" class="active"><a href="roupas">Roupas</a></li>
-                        <li role="presentation"><a href="calcados">Calçados</a></li>
-                        <li role="presentation"><a href="aderecos">Adereços</a></li>
+                        <li role="presentation" class="active"><a href="/bazar/roupas">Roupas</a></li>
+                        <li role="presentation"><a href="/bazar/calcados">Calçados</a></li>
+                        <li role="presentation"><a href="/bazar/aderecos">Adereços</a></li>
                     </ul>
                 </div>
                 <div class='col-lg-10'>
-                    <div id='roupas'>
-                        
+                    <div class='row'>
+                        <div class='col-lg-12'>
+                            <h1>Roupas</h1>
+                        </div>
                     </div>
-                    <div id='calçados'>
-                        
-                    </div>
-                    <div id='adereços'>
-                        
-                    </div>
-                    <h1>Roupas</h1>
-                    hello world! <strong>{{ boldmessage }}</strong><br />
-
-                    {% if tipo_roupas %}
-                        <ul>
-                            {% for tipo in tipo_roupas %}
-                            <li>{{ tipo.nome }}</li>
-                            {% endfor %}
-                        </ul>
+                    {% load static %}
+                    {% if roupas %}
+                        {% for roupa in roupas %}
+                            <div class='row'>
+                                <div class='col-lg-12'>
+                                    <h5>{{ roupa.descricao }}</h5>
+                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                </div>
+                            </div>
+                        {% endfor %}
                     {% else %}
                         <strong>Não há nenhum tipo de roupa cadastrado</strong>
                     {% endif %}
-                    {% load static %}
-                    <img src="{% static 'images/rango.png' %}" alt="My image"/>
-                    <a href="/rango/about/">About</a><br />
                 </div>
             </div>
         </div>
