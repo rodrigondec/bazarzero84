@@ -82,32 +82,16 @@
                         {% load static %}
                         {% if roupas %}
                         {% for roupa in roupas %}
+                            {% if forloop.counter|divisibleby:6 %}
                             <div class='row'>
+                            {% endif %}
                                 <div class='col-lg-2'>
                                     {{ roupa.descricao }}
                                     <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
                                 </div>
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
+                            {% if forloop.counter|divisibleby:6 %}
                             </div>   
+                            {% endif %}
                             {% endfor %}
                         {% else %}
                             <strong>Não há nenhum tipo de roupa cadastrado</strong>
