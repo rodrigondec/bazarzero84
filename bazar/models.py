@@ -11,13 +11,19 @@ class Pessoa(models.Model):
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.nome
 
+	def __unicode__(self):
+		return self.nome
+
 class Venda(models.Model):
 	idvenda = models.AutoField(primary_key=True)
 	comprador = models.ForeignKey(Pessoa)
 	data = models.DateField(auto_now=True)
 	
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tag
+		return self.comprador.nome
+
+	def __unicode__(self):
+		return self.comprador.nome
 
 class Produto(models.Model):
 	idproduto = models.AutoField(primary_key=True)
@@ -29,11 +35,17 @@ class Produto(models.Model):
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.tag
 
+	def __unicode__(self):
+		return self.tag
+
 class Tipo_roupa(models.Model):
 	idtipo_roupa = models.AutoField(primary_key=True)
 	nome = models.CharField(max_length=128, unique=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
+		return self.nome
+
+	def __unicode__(self):
 		return self.nome
 
 class Tipo_calcado(models.Model):
@@ -43,11 +55,17 @@ class Tipo_calcado(models.Model):
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.nome
 
+	def __unicode__(self):
+		return self.nome
+
 class Tipo_adereco(models.Model):
 	idtipo_adereco = models.AutoField(primary_key=True)
 	nome = models.CharField(max_length=128, unique=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
+		return self.nome
+
+	def __unicode__(self):
 		return self.nome
 
 class Roupa(models.Model):
@@ -56,11 +74,14 @@ class Roupa(models.Model):
 	# file will be uploaded to MEDIA_ROOT/roupas
 	foto = models.ImageField(upload_to='roupas', null=True)
 	descricao = models.CharField(max_length=128, null=True)
-	produto = models.ForeignKey(Produto)
+	produto = models.OneToOneField(Produto)
 	tipo = models.ForeignKey(Tipo_roupa)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome
+		return self.tipo.nome+' | '+self.descricao
+
+	def __unicode__(self):
+		return self.tipo.nome+' | '+self.descricao
 
 class Calcado(models.Model):
 	idroupa = models.AutoField(primary_key=True)
@@ -68,19 +89,25 @@ class Calcado(models.Model):
 	# file will be uploaded to MEDIA_ROOT/calcados
 	foto = models.ImageField(upload_to='calcados', null=True)
 	descricao = models.CharField(max_length=128, null=True)
-	produto = models.ForeignKey(Produto)
+	produto = models.OneToOneField(Produto)
 	tipo = models.ForeignKey(Tipo_calcado)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome
+		return self.tipo.nome+' | '+self.descricao
+
+	def __unicode__(self):
+		return self.tipo.nome+' | '+self.descricao
 
 class Adereco(models.Model):
 	idroupa = models.AutoField(primary_key=True)
 	# file will be uploaded to MEDIA_ROOT/aderecos
 	foto = models.ImageField(upload_to='aderecos', null=True)
 	descricao = models.CharField(max_length=128, null=True)
-	produto = models.ForeignKey(Produto)
+	produto = models.OneToOneField(Produto)
 	tipo = models.ForeignKey(Tipo_adereco)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome
+		return self.tipo.nome+' | '+self.descricao
+
+	def __unicode__(self):
+		return self.tipo.nome+' | '+self.descricao
