@@ -130,11 +130,6 @@ USE_TZ = True
 # STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
-STATIC_ADMIN_PATH = os.path.join(BASE_DIR, 'static/admin')
-
-STATICFILES_DIRS = [
-    STATIC_ADMIN_PATH,
-]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/upload')
 MEDIA_URL   = '/upload/'
