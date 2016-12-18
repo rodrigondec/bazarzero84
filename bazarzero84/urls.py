@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = [
@@ -7,6 +7,10 @@ urlpatterns = [
     # url(r'^$', include('bazar.urls')),
     url(r'^bazar/', include('bazar.urls')),
 ]
+
+urlpatterns += patterns('',
+ (r'^static/(?P.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+ )
 
 # from django.conf.urls import patterns, include, url
 # from django.contrib import admin
