@@ -133,7 +133,7 @@ STATIC_URL = '/static/'
 STATIC_ADMIN_PATH = os.path.join(BASE_DIR, 'static/admin')
 
 STATICFILES_DIRS = [
-    STATIC_PATH,
+    STATIC_ADMIN_PATH,
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/upload')
