@@ -1,2 +1,10 @@
 https://devcenter.heroku.com/articles/getting-started-with-python
 http://www.marinamele.com/2013/12/how-to-set-django-app-on-heroku-part-i.html
+
+
+heroku git:remote -a bazarzero84
+git push heroku master
+heroku ps:scale web=1
+heroku open
+heroku logs --tail
+heroku local web

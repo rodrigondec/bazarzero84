@@ -65,13 +65,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'bazarzero84.wsgi.application'
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql', 
+    #     'NAME': 'bazarzero84',
+    #     'USER': 'root',
+    #     'PASSWORD': '',
+    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'bazarzero84',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'USER': 'bazar',
+        'PASSWORD': 'bazar123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
