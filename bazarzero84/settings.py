@@ -73,13 +73,21 @@ DATABASES = {
     #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
     #     'PORT': '3306',
     # }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'bazarzero84',
+    #     'USER': 'bazar',
+    #     'PASSWORD': 'bazar123',
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bazarzero84',
-        'USER': 'bazar',
-        'PASSWORD': 'bazar123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dbni68lcf6v566',
+        'USER': 'gmjllqjlgrxdsc',
+        'PASSWORD': 'e1cc55ca2c65cc2e4e447dadaf618b99221717a391c6411091135797c942513b',
+        'HOST': 'ec2-23-23-223-2.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
