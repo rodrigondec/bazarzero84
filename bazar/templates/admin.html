@@ -1,40 +1,6 @@
 {% extends "base_admin.html" %}
 {% block content %}
 <div class='container-fluid'>
-    <div class='row'>
-        <div class='col-lg-2'>
-            <ul class="nav nav-tabs nav-stacked">
-                <li role="presentation"><a href="/roupas">Roupas</a></li>
-                <li role="presentation"><a href="/calcados">Calçados</a></li>
-                <li role="presentation"><a href="/aderecos">Adereços</a></li>
-            </ul>
-        </div>
-        <div class='col-lg-10'>
-            <div id='roupas'>
-                
-            </div>
-            <div id='calçados'>
-                
-            </div>
-            <div id='adereços'>
-                
-            </div>
-            <h1>Rango says...</h1>
-            hello world! <strong>{{ boldmessage }}</strong><br />
-
-            {% if tipo_roupas %}
-                <ul>
-                    {% for tipo in tipo_roupas %}
-                    <li>{{ tipo.nome }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <strong>Não há nenhum tipo de roupa cadastrado</strong>
-            {% endif %}
-            {% load static %}
-            <img src="{% static 'images/rango.png' %}" alt="My image"/>
-            <a href="/rango/about/">About</a><br />
-        </div>
-    </div>
+    PÁGINA DE ADMIN
 </div>
 {% endblock %}
