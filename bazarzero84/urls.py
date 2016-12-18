@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^d-admin/', admin.site.urls),
     # url(r'^\Z', include('bazar.urls')),
     # url(r'^$', include('bazar.urls')),
     # url(r'^bazar/', include('bazar.urls')),
