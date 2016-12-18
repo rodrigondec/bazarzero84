@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^roupas/$', views.roupas, name='roupas'),
     url(r'^calcados/$', views.calcados, name='calcados'),
     url(r'^aderecos/$', views.aderecos, name='aderecos'),
+    url(r'^admin/$', views.admin, name='admin'),
     url(r'^add_pessoa/$', views.add_pessoa, name='add_pessoa'),
 ]
 

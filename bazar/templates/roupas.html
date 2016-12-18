@@ -1,111 +1,42 @@
-<!DOCTYPE html>
-<html>
-
-    <head>
-        <title>Bazar</title>
-        <meta charset="UTF-8">
-        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    </head>
-
-    <body> 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brand</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-left">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-        <div class='container-fluid'>
+{% extends "base.html" %}
+{% block content %}
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-lg-2'>
+            <ul class="nav nav-tabs nav-stacked">
+                <li role="presentation" class="active"><a href="/roupas">Roupas</a></li>
+                <li role="presentation"><a href="/calcados">Calçados</a></li>
+                <li role="presentation"><a href="/aderecos">Adereços</a></li>
+            </ul>
+        </div>
+        <div class='col-lg-10'>
             <div class='row'>
-                <div class='col-lg-2'>
-                    <ul class="nav nav-tabs nav-stacked">
-                        <li role="presentation" class="active"><a href="/roupas">Roupas</a></li>
-                        <li role="presentation"><a href="/calcados">Calçados</a></li>
-                        <li role="presentation"><a href="/aderecos">Adereços</a></li>
-                    </ul>
+                <div class='col-lg-12'>
+                    <h1>Roupas</h1>
                 </div>
-                <div class='col-lg-10'>
+            </div>
+            <div class='row'>
+                <div class='col-lg-12'>
+                {% load static %}
+                {% if roupas %}
+                {% for roupa in roupas %}
+                    {% if forloop.counter|divisibleby:6 %}
                     <div class='row'>
-                        <div class='col-lg-12'>
-                            <h1>Roupas</h1>
+                    {% endif %}
+                        <div class='col-lg-2'>
+                            {{ roupa.descricao }}
+                            <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
                         </div>
-                    </div>
-                    <div class='row'>
-                        <div class='col-lg-12'>
-                        {% load static %}
-                        {% if roupas %}
-                        {% for roupa in roupas %}
-                            {% if forloop.counter|divisibleby:6 %}
-                            <div class='row'>
-                            {% endif %}
-                                <div class='col-lg-2'>
-                                    {{ roupa.descricao }}
-                                    <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
-                                </div>
-                            {% if forloop.counter|divisibleby:6 %}
-                            </div>   
-                            {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            <strong>Não há nenhum tipo de roupa cadastrado</strong>
-                        {% endif %}
-                        </div>
-                    </div>
+                    {% if forloop.counter|divisibleby:6 %}
+                    </div>   
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <strong>Não há nenhum tipo de roupa cadastrado</strong>
+                {% endif %}
                 </div>
             </div>
         </div>
-    </body>
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-</html>
+    </div>
+</div>
+{% endblock %}

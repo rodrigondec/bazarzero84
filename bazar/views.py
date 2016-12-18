@@ -9,6 +9,10 @@ def index(request):
 
 	return render(request, 'index.html', context_dict)
 
+def admin(request):
+    context_dict = {}
+    return render(request, 'admin.html', context_dict)
+
 def roupas(request):
     roupas = Roupa.objects.all()
     context_dict = {'roupas': roupas}

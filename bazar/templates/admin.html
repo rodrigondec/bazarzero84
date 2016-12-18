@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_admin.html" %}
 {% block content %}
 <div class='container-fluid'>
     <div class='row'>
@@ -6,7 +6,7 @@
             <ul class="nav nav-tabs nav-stacked">
                 <li role="presentation"><a href="/roupas">Roupas</a></li>
                 <li role="presentation"><a href="/calcados">Calçados</a></li>
-                <li role="presentation" class="active"><a href="/aderecos">Adereços</a></li>
+                <li role="presentation"><a href="/aderecos">Adereços</a></li>
             </ul>
         </div>
         <div class='col-lg-10'>
@@ -19,8 +19,9 @@
             <div id='adereços'>
                 
             </div>
-            <h1>Adereços</h1>
-            
+            <h1>Rango says...</h1>
+            hello world! <strong>{{ boldmessage }}</strong><br />
+
             {% if tipo_roupas %}
                 <ul>
                     {% for tipo in tipo_roupas %}
