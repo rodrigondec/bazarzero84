@@ -15,7 +15,9 @@ def admin(request):
 
 def roupas(request):
     roupas = Roupa.objects.all()
-    context_dict = {'roupas': roupas}
+    tipos = Tipo_roupa.objects.all()
+    
+    context_dict = {'roupas': roupas, 'tipos' : tipos}
 
     return render(request, 'roupas.html', context_dict)
 
