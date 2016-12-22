@@ -2,6 +2,7 @@ python manage.py runserver || inicia o server
 python manage.py makemigrations || configura as migrações
 python manage.py migrate || realiza as migrações
 python manage.py createsuperuser || cria admin
+python manage.py collectstatic --noinput;
 pip freeze > requirements.txt || salva as depêndencias
 
 drop database bazarzero84;

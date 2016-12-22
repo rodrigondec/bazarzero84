@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --noinput; gunicorn bazarzero84.wsgi --log-file -
+web: gunicorn bazarzero84.wsgi --log-file -
