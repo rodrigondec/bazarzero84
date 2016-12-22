@@ -20,15 +20,15 @@ class Venda(models.Model):
 	data = models.DateField(auto_now=True)
 	
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.comprador.nome
+		return self.comprador.nome+" | "+str(self.data)
 
 	def __unicode__(self):
-		return self.comprador.nome
+		return self.comprador.nome+" | "+str(self.data)
 
 class Produto(models.Model):
 	idproduto = models.AutoField(primary_key=True)
 	tag = models.CharField(max_length=128, unique=True)
-	preco = models.IntegerField(default=0)
+	preco = models.DecimalField(default=0, max_digits=7, decimal_places=2)
 	fornecedor = models.ForeignKey(Pessoa)
 	venda = models.ForeignKey(Venda, null=True)
 
