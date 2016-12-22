@@ -4,10 +4,13 @@ from bazar.models import *
 from bazar.forms import PessoaForm
 
 def index(request):
-	tipo_roupa_list = Tipo_roupa.objects.all()
-	context_dict = {'tipo_roupas': tipo_roupa_list, 'boldmessage': "I am bold font from the context"}
+    roupas = Roupa.objects.all()
+    calcados = Calcado.objects.all()
+    aderecos = Adereco.objects.all()
 
-	return render(request, 'index.html', context_dict)
+    context_dict = {'roupas': roupas, 'calcados': calcados, 'aderecos': aderecos}
+
+    return render(request, 'index.html', context_dict)
 
 def admin(request):
     context_dict = {}
@@ -22,19 +25,23 @@ def roupas(request):
     return render(request, 'roupas.html', context_dict)
 
 def calcados(request):
-	tipo_roupa_list = Tipo_roupa.objects.all()
-	context_dict = {'tipo_roupas': tipo_roupa_list, 'boldmessage': "I am bold font from the context"}
+    calcados = Calcado.objects.all()
+    tipos = Tipo_calcado.objects.all()
 
-	return render(request, 'calcados.html', context_dict)
+    context_dict = {'calcados': calcados, 'tipos': tipos}
+
+    return render(request, 'calcados.html', context_dict)
 
 def aderecos(request):
-	tipo_roupa_list = Tipo_roupa.objects.all()
-	context_dict = {'tipo_roupas': tipo_roupa_list, 'boldmessage': "I am bold font from the context"}
+    aderecos = Adereco.objects.all()
+    tipos = Tipo_adereco.objects.all()
 
-	return render(request, 'aderecos.html', context_dict)
+    context_dict = {'aderecos': aderecos, 'tipos': tipos}
+
+    return render(request, 'aderecos.html', context_dict)
 
 def add_pessoa(request):
-	# A HTTP POST?
+    # A HTTP POST? 
     if request.method == 'POST':
         form = PessoaForm(request.POST)
 
