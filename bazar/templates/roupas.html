@@ -1,19 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+<script>
+    $('#nav-roupas').addClass('active');
+</script>
 <div class='container-fluid'>
     <div class='row'>
         <div class='col-lg-2'>
-            <ul class="nav nav-pills nav-stacked">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/roupas">Roupas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/calcados">Calçados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/aderecos">Adereços</a>
-                </li>
-            </ul>
+            {% if tipos %}
+            <div class="card text-xs-center">
+                <div class="card-header">
+                    Categorias
+                </div>
+                <div class="card-block">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/roupas/">Todas</a>
+                        </li>
+                {% for tipo in tipos %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/roupas/{{ tipo.idtipo_roupa }}">{{ tipo.nome }}</a>
+                        </li>
+                {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+                <strong>Não há nenhum tipo de roupa cadastrado</strong>
+            {% endif %}
         </div>
         <div class='col-lg-10'>
             <div class='row'>
@@ -25,18 +38,23 @@
                 <div class='col-lg-12'>
                 {% load static %}
                 {% if roupas %}
+                    <div class='row'>
                 {% for roupa in roupas %}
-                    {% if forloop.counter|divisibleby:6 %}
+                    {% if forloop.counter|divisibleby:7 %}
+                    </div>
                     <div class='row'>
                     {% endif %}
                         <div class='col-lg-2'>
-                            {{ roupa.descricao }}
-                            <img src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                            <div class="card">
+                                <img class="card-img-top" src="{% static 'images'|add:roupa.foto.url %}" alt="My image"/ width="100px">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{ roupa.produto.tag }}</h4>
+                                    <p class="card-text">{{ roupa.descricao }}</p>
+                                </div>
+                            </div>
                         </div>
-                    {% if forloop.counter|divisibleby:6 %}
-                    </div>   
-                    {% endif %}
                     {% endfor %}
+                    </div> 
                 {% else %}
                     <strong>Não há nenhum tipo de roupa cadastrado</strong>
                 {% endif %}
