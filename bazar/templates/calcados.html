@@ -1,8 +1,20 @@
 {% extends "base/normal.html" %}
 {% block content %}
 <script>
-    id = '#nav-link-all';
-    $(id).addClass('active');
+    $( document ).ready(function() {
+        $('#nav-calcados').addClass('active'); 
+        url = window.location.href;
+        partes = url.split('/');
+        penultima = partes[partes.length - 2];
+        if(penultima == 'calcados'){
+            id = '#nav-link-all';
+            $(id).addClass('active');
+        }
+        else{
+            id = '#nav-link-'+penultima;
+            $(id).addClass('active');
+        }
+    });
 </script>
 <div class='container-fluid'>
     <div class='row'>
