@@ -1,7 +1,17 @@
 {% extends "base/normal.html" %}
 {% block content %}
 <script>
-    $('#nav-roupas').addClass('active');
+    url = window.location.href
+    partes = url.split('/')
+    penultima = partes[partes.length - 2]
+    if(penultima == 'roupas'){
+        id = '#nav-link-all'
+        $(id).addClass('active');
+    }
+    else{
+        id = '#nav-link-'+penultima
+        $(id).addClass('active');
+    }
 </script>
 <div class='container-fluid'>
     <div class='row'>
@@ -14,11 +24,11 @@
                 <div class="card-block">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/roupas/">Todas</a>
+                            <a class="nav-link" id='nav-link-all' href="/roupas/">Todas</a>
                         </li>
                 {% for categoria in categorias %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/roupas/{{ categoria.idcategoria_roupa }}">{{ categoria.nome }}</a>
+                            <a class="nav-link" id='nav-link-{{ categoria.idcategoria_roupa }}' href="/roupas/{{ categoria.idcategoria_roupa }}">{{ categoria.nome }}</a>
                         </li>
                 {% endfor %}
                     </ul>
