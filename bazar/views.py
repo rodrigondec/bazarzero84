@@ -42,7 +42,12 @@ def aderecos(request):
 
     return render(request, 'aderecos.html', context_dict)
 
-@login_required(login_url='/interna/login/')
+@login_required(login_url='/admin/login/')
+def interna(request):
+    context_dict = {}
+    return render(request, 'interna/index.html', context_dict)
+
+@login_required(login_url='/admin/login/')
 def add_pessoa(request):
     # A HTTP POST? 
     if request.method == 'POST':
@@ -66,3 +71,4 @@ def add_pessoa(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render(request, 'interna/add_pessoa.html', {'form': form})
+
