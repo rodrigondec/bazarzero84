@@ -1,7 +1,9 @@
-{% extends "base/admin.html" %}
-{% block content %}
-<h1 class='text-center'>Cadastrar Pessoa</h1>
-<div class='col-lg-4 col-lg-offset-4'>
+{% extends "base/form.html" %}
+
+{% block header %}Cadastrar Pessoa{% endblock %}
+
+{% block row-content %}
+<div class='col-lg-4 offset-lg-4'>
     <form id="pessoa_form" method="post" action="/bazar/add_pessoa/">
 
         {% csrf_token %}
@@ -15,7 +17,7 @@
             {{ field }}
         {% endfor %}
 
-        <input class='btn btn-default' type="submit" name="submit" value="Cadastrar Pessoa" />
+        <input class='btn btn-success' type="submit" name="submit" value="Cadastrar Pessoa" />
     </form>
 </div>
 {% endblock %}

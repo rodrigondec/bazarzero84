@@ -21,7 +21,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-LOGIN_REDIRECT_URL = '/interna/' # It means home view
+LOGIN_REDIRECT_URL = '/admin/' # It means home view
 
 # Application definition
 
