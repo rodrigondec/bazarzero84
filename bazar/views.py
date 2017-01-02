@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from bazar.models import *
-from bazar.forms import PessoaForm
+from bazar.forms import *
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -12,11 +12,6 @@ def index(request):
     context_dict = {'roupas': roupas, 'calcados': calcados, 'aderecos': aderecos}
 
     return render(request, 'index.html', context_dict)
-
-@login_required(login_url='/interna/login/')
-def interna(request):
-    context_dict = {}
-    return render(request, 'interna/index.html', context_dict)
 
 def roupas(request):
     roupas = Roupa.objects.all()
@@ -72,3 +67,114 @@ def add_pessoa(request):
     # Render the form with error messages (if any).
     return render(request, 'interna/add_pessoa.html', {'form': form})
 
+@login_required(login_url='/admin/login/')
+def add_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = UsuarioForm()
+
+    return render(request, 'interna/add_usuario.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_categoria_roupa(request):
+    if request.method == 'POST':
+        form = CategoriaRoupaForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CategoriaRoupaForm()
+
+    return render(request, 'interna/add_categoria_roupa.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_roupa(request):
+    if request.method == 'POST':
+        form = RoupaForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = RoupaForm()
+
+    return render(request, 'interna/add_roupa.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_categoria_calcado(request):
+    if request.method == 'POST':
+        form = CategoriaCalcadoForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CategoriaCalcadoForm()
+
+    return render(request, 'interna/add_categoria_calcado.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_calcado(request):
+    if request.method == 'POST':
+        form = CalcadoForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CalcadoForm()
+
+    return render(request, 'interna/add_calcado.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_categoria_adereco(request):
+    if request.method == 'POST':
+        form = CategoriaAderecoForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CategoriaAderecoForm()
+
+    return render(request, 'interna/add_categoria_adereco.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
+def add_adereco(request):
+    if request.method == 'POST':
+        form = AderecoForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = AderecoForm()
+
+    return render(request, 'interna/add_adereco.html', {'form': form})

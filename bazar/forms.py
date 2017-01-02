@@ -49,7 +49,7 @@ class ProdutoForm(forms.ModelForm):
         #or specify the fields to include (i.e. not include the category field)
         #fields = ('title', 'url', 'views')
 
-class Tipo_roupaForm(forms.ModelForm):
+class CategoriaRoupaForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the Pessoa.")
 
     class Meta:
@@ -65,7 +65,7 @@ class Tipo_roupaForm(forms.ModelForm):
         #or specify the fields to include (i.e. not include the category field)
         #fields = ('title', 'url', 'views')
 
-class Tipo_calcadoForm(forms.ModelForm):
+class CategoriaCalcadoForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the Pessoa.")
 
     class Meta:
@@ -81,7 +81,7 @@ class Tipo_calcadoForm(forms.ModelForm):
         #or specify the fields to include (i.e. not include the category field)
         #fields = ('title', 'url', 'views')
 
-class Tipo_aderecoForm(forms.ModelForm):
+class CategoriaAderecoForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the Pessoa.")
 
     class Meta:
