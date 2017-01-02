@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from bazar.models import *
 from bazar.forms import PessoaForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     roupas = Roupa.objects.all()
@@ -12,9 +13,10 @@ def index(request):
 
     return render(request, 'index.html', context_dict)
 
-def admin(request):
+@login_required(login_url='/interna/login/')
+def interna(request):
     context_dict = {}
-    return render(request, 'admin.html', context_dict)
+    return render(request, 'interna/index.html', context_dict)
 
 def roupas(request):
     roupas = Roupa.objects.all()
@@ -40,6 +42,7 @@ def aderecos(request):
 
     return render(request, 'aderecos.html', context_dict)
 
+@login_required(login_url='/interna/login/')
 def add_pessoa(request):
     # A HTTP POST? 
     if request.method == 'POST':
@@ -62,4 +65,4 @@ def add_pessoa(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render(request, 'add_pessoa.html', {'form': form})
+    return render(request, 'interna/add_pessoa.html', {'form': form})
