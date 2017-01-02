@@ -10,15 +10,30 @@
         </div>
         <div class='col-lg-3 offset-lg-4'>
             {% if form.errors %}
-                <p>Usuário e senha inválidos. Tente novamente.</p>
+                <div class="alert alert-error alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p><strong>Usuário e senha inválidos.</strong> Tente novamente.</p>
+                </div>
             {% endif %}
 
             {% if next %}
                 {% if user.is_authenticated %}
-                    <p>Your account doesn't have access to this page. To proceed,
-                    please login with an account that has access.</p>
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p>Your account doesn't have access to this page. To proceed,
+                        please login with an account that has access.</p>
+                    </div>
                 {% else %}
-                    <p>É necessário realizar login para acessar essa página.</p>
+                    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p>É necessário realizar login para acessar essa página.</p>
+                    </div>
                 {% endif %}
             {% endif %}
             <form method="post" action="{% url 'login' %}">
