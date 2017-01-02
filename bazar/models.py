@@ -49,8 +49,8 @@ class Venda(models.Model):
 	def __unicode__(self):
 		return self.comprador.nome+" | "+self.produto.nome
 
-class Tipo_roupa(models.Model):
-	idtipo_roupa = models.AutoField(primary_key=True)
+class Categoria_roupa(models.Model):
+	idcategoria_roupa = models.AutoField(primary_key=True)
 	nome = models.CharField(max_length=128, unique=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
@@ -59,8 +59,8 @@ class Tipo_roupa(models.Model):
 	def __unicode__(self):
 		return self.nome
 
-class Tipo_calcado(models.Model):
-	idtipo_calcado = models.AutoField(primary_key=True)
+class Categoria_calcado(models.Model):
+	idcategoria_calcado = models.AutoField(primary_key=True)
 	nome = models.CharField(max_length=128, unique=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
@@ -69,8 +69,8 @@ class Tipo_calcado(models.Model):
 	def __unicode__(self):
 		return self.nome
 
-class Tipo_adereco(models.Model):
-	idtipo_adereco = models.AutoField(primary_key=True)
+class Categoria_adereco(models.Model):
+	idcategoria_adereco = models.AutoField(primary_key=True)
 	nome = models.CharField(max_length=128, unique=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
@@ -86,13 +86,13 @@ class Roupa(models.Model):
 	foto = models.ImageField(upload_to='roupas', null=True)
 	descricao = models.CharField(max_length=128, null=True)
 	produto = models.OneToOneField(Produto)
-	tipo = models.ForeignKey(Tipo_roupa)
+	categoria = models.ForeignKey(Categoria_roupa)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
 
 	def __unicode__(self):
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
 
 class Calcado(models.Model):
 	idroupa = models.AutoField(primary_key=True)
@@ -101,13 +101,13 @@ class Calcado(models.Model):
 	foto = models.ImageField(upload_to='calcados', null=True)
 	descricao = models.CharField(max_length=128, null=True)
 	produto = models.OneToOneField(Produto)
-	tipo = models.ForeignKey(Tipo_calcado)
+	categoria = models.ForeignKey(Categoria_calcado)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
 
 	def __unicode__(self):
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
 
 class Adereco(models.Model):
 	idroupa = models.AutoField(primary_key=True)
@@ -115,10 +115,10 @@ class Adereco(models.Model):
 	foto = models.ImageField(upload_to='aderecos', null=True)
 	descricao = models.CharField(max_length=128, null=True)
 	produto = models.OneToOneField(Produto)
-	tipo = models.ForeignKey(Tipo_adereco)
+	categoria = models.ForeignKey(Categoria_adereco)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
 
 	def __unicode__(self):
-		return self.tipo.nome+' | '+self.descricao
+		return self.categoria.nome+' | '+self.descricao
