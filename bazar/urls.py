@@ -1,30 +1,32 @@
 from django.conf.urls import url
 from bazar import views
+from django.contrib.auth import views as auth_views
+from bazar.forms import LoginForm
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+
+    # URLS PUBLICAS
     url(r'^roupas/$', views.roupas, name='roupas'),
     url(r'^calcados/$', views.calcados, name='calcados'),
     url(r'^aderecos/$', views.aderecos, name='aderecos'),
-    url(r'^admin/$', views.admin, name='admin'),
-    url(r'^add_pessoa/$', views.add_pessoa, name='add_pessoa'),
+
+
+    # URLS DE interna
+    url(r'^interna/$', views.interna, name='interna'),
+    url(r'^interna/add_pessoa/$', views.add_pessoa, name='add_pessoa'),
+
+
+    # URLS DE AUTENTICACAO
+    url(r'^interna/login/$', auth_views.login, {'authentication_form': LoginForm}, name='login'),
+    url(r'^interna/logout/$', auth_views.logout, name='logout'),
+
+    url(r'^interna/password_change/$', auth_views.password_change, name='password_change'),
+    url(r'^interna/password_change/done/$', auth_views.password_change_done, name='password_change_done'),
+
+    url(r'^interna/password_reset/$', auth_views.password_reset, name='password_reset'),
+    url(r'^interna/password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+    url(r'^interna/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.password_reset_confirm, name='password_reset_confirm'),
+    url(r'^interna/reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
 ]
-
-# from django.conf.urls import patterns
-
-# from smarturls import surl as url
-
-# import views
-
-# urlpatterns = patterns(
-#     '',
-#     url(regex=r'/events/<slug:slug>/jury/',
-#         view=views.JuryView.as_view(),
-#         name='jury_event'),
-#     url(regex=r'/events/<slug:slug>/invite/jury/',
-#         view=views.InviteEvent.as_view(),
-#         name='event_invite_to_jury'),
-#     url(regex=r'/events/<slug:slug>/remove/jury/<int:user_pk>/',
-#         view=views.remove_user_from_event_jury,
-#         name='event_remove_from_jury'),
-# )
