@@ -14,29 +14,40 @@ class Pessoa(models.Model):
 	def __unicode__(self):
 		return self.nome
 
-class Venda(models.Model):
-	idvenda = models.AutoField(primary_key=True)
-	comprador = models.ForeignKey(Pessoa)
-	data = models.DateField(auto_now=True)
-	
+class Usuario(models.Model):
+	idusuario = models.AutoField(primary_key=True)
+	pessoa = models.OneToOneField(Pessoa)
+	senha = models.CharField(max_length=16)
+
 	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.comprador.nome+" | "+str(self.data)
+		return self.pessoa.nome
 
 	def __unicode__(self):
-		return self.comprador.nome+" | "+str(self.data)
+		return self.pessoa.nome
 
 class Produto(models.Model):
 	idproduto = models.AutoField(primary_key=True)
 	tag = models.CharField(max_length=128, unique=True)
 	preco = models.DecimalField(default=0, max_digits=7, decimal_places=2)
 	fornecedor = models.ForeignKey(Pessoa)
-	venda = models.ForeignKey(Venda, null=True)
 
 	def __str__(self):  #For Python 2, use __str__ on Python 3
 		return self.tag
 
 	def __unicode__(self):
 		return self.tag
+
+class Venda(models.Model):
+	idvenda = models.AutoField(primary_key=True)
+	comprador = models.ForeignKey(Pessoa)
+	produto = models.OneToOneField(Produto)
+	data = models.DateField(auto_now=True)
+	
+	def __str__(self):  #For Python 2, use __str__ on Python 3
+		return self.comprador.nome+" | "+self.produto.nome
+
+	def __unicode__(self):
+		return self.comprador.nome+" | "+self.produto.nome
 
 class Tipo_roupa(models.Model):
 	idtipo_roupa = models.AutoField(primary_key=True)
