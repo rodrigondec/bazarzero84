@@ -21,6 +21,15 @@ def roupas(request):
 
     return render(request, 'roupas.html', context_dict)
 
+def roupas_categoria(request, idcategoria):
+    categoria_escolhida = Categoria_roupa.objects.get(idcategoria_roupa=idcategoria)
+    roupas = Roupa.objects.filter(categoria=categoria_escolhida)
+    categorias = Categoria_roupa.objects.all()
+    
+    context_dict = {'roupas': roupas, 'categorias' : categorias}
+
+    return render(request, 'roupas.html', context_dict)
+
 def calcados(request):
     calcados = Calcado.objects.all()
     categorias = Categoria_calcado.objects.all()
@@ -29,6 +38,14 @@ def calcados(request):
 
     return render(request, 'calcados.html', context_dict)
 
+def calcados_categoria(request, idcategoria):
+    roupas = Roupa.objects.all()
+    categorias = Categoria_roupa.objects.all()
+    
+    context_dict = {'roupas': roupas, 'categorias' : categorias}
+
+    return render(request, 'roupas.html', context_dict)
+
 def aderecos(request):
     aderecos = Adereco.objects.all()
     categorias = Categoria_adereco.objects.all()
@@ -36,6 +53,14 @@ def aderecos(request):
     context_dict = {'aderecos': aderecos, 'categorias': categorias}
 
     return render(request, 'aderecos.html', context_dict)
+
+def aderecos_categoria(request, idcategoria):
+    roupas = Roupa.objects.all()
+    categorias = Categoria_roupa.objects.all()
+    
+    context_dict = {'roupas': roupas, 'categorias' : categorias}
+
+    return render(request, 'roupas.html', context_dict)
 
 @login_required(login_url='/admin/login/')
 def interna(request):

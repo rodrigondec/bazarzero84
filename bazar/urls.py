@@ -8,9 +8,13 @@ urlpatterns = [
 
     # URLS PUBLICAS
     url(r'^roupas/$', views.roupas, name='roupas'),
-    url(r'^calcados/$', views.calcados, name='calcados'),
-    url(r'^aderecos/$', views.aderecos, name='aderecos'),
+    url(r'^roupas/(?P<idcategoria>[\w\-]+)/$', views.roupas_categoria, name='roupas_categoria'),
 
+    url(r'^calcados/$', views.calcados, name='calcados'),
+    url(r'^calcados/(?P<idcategoria>[\w\-]+)/$', views.calcados_categoria, name='calcados_categoria'),
+
+    url(r'^aderecos/$', views.aderecos, name='aderecos'),
+    url(r'^aderecos/(?P<idcategoria>[\w\-]+)/$', views.aderecos_categoria, name='aderecos_categoria'),
 
     # # URLS DE admin
     # url(r'^admin/$', views.interna, name='admin'),
