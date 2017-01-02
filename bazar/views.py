@@ -15,25 +15,25 @@ def index(request):
 
 def roupas(request):
     roupas = Roupa.objects.all()
-    tipos = Tipo_roupa.objects.all()
+    categorias = Categoria_roupa.objects.all()
     
-    context_dict = {'roupas': roupas, 'tipos' : tipos}
+    context_dict = {'roupas': roupas, 'categorias' : categorias}
 
     return render(request, 'roupas.html', context_dict)
 
 def calcados(request):
     calcados = Calcado.objects.all()
-    tipos = Tipo_calcado.objects.all()
+    categorias = Categoria_calcado.objects.all()
 
-    context_dict = {'calcados': calcados, 'tipos': tipos}
+    context_dict = {'calcados': calcados, 'categorias': categorias}
 
     return render(request, 'calcados.html', context_dict)
 
 def aderecos(request):
     aderecos = Adereco.objects.all()
-    tipos = Tipo_adereco.objects.all()
+    categorias = Categoria_adereco.objects.all()
 
-    context_dict = {'aderecos': aderecos, 'tipos': tipos}
+    context_dict = {'aderecos': aderecos, 'categorias': categorias}
 
     return render(request, 'aderecos.html', context_dict)
 
