@@ -1,15 +1,17 @@
 {% extends "base/normal.html" %}
 {% block content %}
 <script>
-    url = window.location.href
-    partes = url.split('/')
-    penultima = partes[partes.length - 2]
+    id = '#nav-link-all';
+    $(id).addClass('active');
+    url = window.location.href;
+    partes = url.split('/');
+    penultima = partes[partes.length - 2];
     if(penultima == 'roupas'){
-        id = '#nav-link-all'
+        id = '#nav-link-all';
         $(id).addClass('active');
     }
     else{
-        id = '#nav-link-'+penultima
+        id = '#nav-link-'+penultima;
         $(id).addClass('active');
     }
 </script>

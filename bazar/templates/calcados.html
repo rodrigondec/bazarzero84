@@ -1,7 +1,8 @@
 {% extends "base/normal.html" %}
 {% block content %}
 <script>
-    $('#nav-calcados').addClass('active');
+    id = '#nav-link-all';
+    $(id).addClass('active');
 </script>
 <div class='container-fluid'>
     <div class='row'>
@@ -14,11 +15,11 @@
                 <div class="card-block">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/calcados/">Todas</a>
+                            <a class="nav-link" id='nav-link-all' href="/calcados/">Todas</a>
                         </li>
                 {% for categoria in categorias %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/calcados/{{ categoria.idcategoria_calcado }}">{{ categoria.nome }}</a>
+                            <a class="nav-link" id='nav-link-{{ categoria.idcategoria_calcado }}' href="/calcados/{{ categoria.idcategoria_calcado }}">{{ categoria.nome }}</a>
                         </li>
                 {% endfor %}
                     </ul>
