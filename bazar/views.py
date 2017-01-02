@@ -68,22 +68,6 @@ def add_pessoa(request):
     return render(request, 'interna/add_pessoa.html', {'form': form})
 
 @login_required(login_url='/admin/login/')
-def add_usuario(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-
-        if form.is_valid():
-            form.save(commit=True)
-
-            return index(request)
-        else:
-            print form.errors
-    else:
-        form = UsuarioForm()
-
-    return render(request, 'interna/add_usuario.html', {'form': form})
-
-@login_required(login_url='/admin/login/')
 def add_categoria_roupa(request):
     if request.method == 'POST':
         form = CategoriaRoupaForm(request.POST)

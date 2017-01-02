@@ -14,17 +14,6 @@ class Pessoa(models.Model):
 	def __unicode__(self):
 		return self.nome
 
-class Usuario(models.Model):
-	idusuario = models.AutoField(primary_key=True)
-	pessoa = models.OneToOneField(Pessoa)
-	senha = models.CharField(max_length=16)
-
-	def __str__(self):  #For Python 2, use __str__ on Python 3
-		return self.pessoa.nome
-
-	def __unicode__(self):
-		return self.pessoa.nome
-
 class Produto(models.Model):
 	idproduto = models.AutoField(primary_key=True)
 	tag = models.CharField(max_length=128, unique=True)

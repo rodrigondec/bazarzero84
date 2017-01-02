@@ -3,7 +3,6 @@ from bazar.models import *
 
 # Register your models here.
 admin.site.register(Pessoa)
-admin.site.register(Usuario)
 admin.site.register(Produto)
 admin.site.register(Venda)
 admin.site.register(Categoria_roupa)
