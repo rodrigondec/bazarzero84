@@ -68,6 +68,31 @@ def add_pessoa(request):
     return render(request, 'interna/add_pessoa.html', {'form': form})
 
 @login_required(login_url='/admin/login/')
+def add_produto(request):
+    # A HTTP POST? 
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return index(request)
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = ProdutoForm()
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render(request, 'interna/add_produto.html', {'form': form})
+
+@login_required(login_url='/admin/login/')
 def add_categoria_roupa(request):
     if request.method == 'POST':
         form = CategoriaRoupaForm(request.POST)

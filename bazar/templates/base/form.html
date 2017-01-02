@@ -6,8 +6,28 @@
         <hr>
     </div>
     <div class='row'>
-    	{%block row-content %}
-        {%endblock %}
+    	<div class='{%block class-div-form %}{%endblock %}'>
+		    <form id="pessoa_form" method="post" action="{%block action-form %}{%endblock %}">
+
+		        {% csrf_token %}
+		        {% for hidden in form.hidden_fields %}
+		            {{ hidden }}
+		        {% endfor %}
+
+		        {% for field in form.visible_fields %}
+		            <div class='form-group row'>
+		                {{ field.errors }}
+		                {{ field.help_text }}
+		                {{ field }} 
+		            </div>
+		        {% endfor %}
+		        <div class='form-group row'>
+		            <div class='{%block class-div-button %}{%endblock %}'>
+		                <input class='btn btn-success' type="submit" name="submit" value="Cadastrar" />
+		            </div>
+		        </div>
+		    </form>
+		</div>
     </div>
 </div>
 {% endblock %}

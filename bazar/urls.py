@@ -15,6 +15,7 @@ urlpatterns = [
     # URLS DE admin
     url(r'^admin/$', views.interna, name='admin'),
     url(r'^admin/add_pessoa/$', views.add_pessoa, name='add_pessoa'),
+    url(r'^admin/add_produto/$', views.add_produto, name='add_produto'),
     url(r'^admin/add_categoria_roupa/$', views.add_categoria_roupa, name='add_categoria_roupa'),
     url(r'^admin/add_roupa/$', views.add_roupa, name='add_roupa'),
     url(r'^admin/add_categoria_calcado/$', views.add_categoria_calcado, name='add_categoria_calcado'),

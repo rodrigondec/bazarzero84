@@ -2,22 +2,6 @@
 
 {% block header %}Cadastrar Pessoa{% endblock %}
 
-{% block row-content %}
-<div class='col-lg-4 offset-lg-4'>
-    <form id="pessoa_form" method="post" action="/bazar/add_pessoa/">
+{% block class-div-form %}col-lg-4 offset-lg-4{% endblock %}
 
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}
-            {{ field }}
-        {% endfor %}
-
-        <input class='btn btn-success' type="submit" name="submit" value="Cadastrar Pessoa" />
-    </form>
-</div>
-{% endblock %}
+{% block action-form %}/admin/add_pessoa/{% endblock %}
