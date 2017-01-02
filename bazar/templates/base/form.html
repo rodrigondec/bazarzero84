@@ -1,0 +1,13 @@
+{% extends "base/admin.html" %}
+{% block content %}
+<div class='container-fluid'>
+    <div class='row text-lg-center'>
+        <h1>{%block header %}{%endblock %}</h1>
+        <hr>
+    </div>
+    <div class='row'>
+    	{%block row-content %}
+        {%endblock %}
+    </div>
+</div>
+{% endblock %}
