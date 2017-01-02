@@ -6,7 +6,7 @@
 <div class='container-fluid'>
     <div class='row'>
         <div class='col-lg-2'>
-            {% if tipos %}
+            {% if categorias %}
             <div class="card text-xs-center">
                 <div class="card-header">
                     Categorias
@@ -16,16 +16,16 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="/roupas/">Todas</a>
                         </li>
-                {% for tipo in tipos %}
+                {% for categoria in categorias %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/roupas/{{ tipo.idtipo_roupa }}">{{ tipo.nome }}</a>
+                            <a class="nav-link" href="/roupas/{{ categoria.idcategoria_roupa }}">{{ categoria.nome }}</a>
                         </li>
                 {% endfor %}
                     </ul>
                 </div>
             </div>
             {% else %}
-                <strong>Não há nenhum tipo de roupa cadastrado</strong>
+                <strong>Não há nenhuma categoria de roupa cadastrado</strong>
             {% endif %}
         </div>
         <div class='col-lg-10'>
@@ -56,7 +56,7 @@
                     {% endfor %}
                     </div> 
                 {% else %}
-                    <strong>Não há nenhum tipo de roupa cadastrado</strong>
+                    <strong>Não há nenhuma roupa cadastrada</strong>
                 {% endif %}
                 </div>
             </div>

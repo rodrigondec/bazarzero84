@@ -6,46 +6,46 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bazarzero84.settings')
 import django
 django.setup()
 
-from bazar.models import Tipo_roupa, Tipo_calcado, Tipo_adereco
+from bazar.models import Categoria_roupa, Categoria_calcado, Categoria_adereco
 
 
 def populate():
-    add_tipo_roupa("blusa")
-    add_tipo_roupa("vestido")
-    add_tipo_roupa("calça")
-    # add_tipo_roupa("")
+    add_categoria_roupa("blusa")
+    add_categoria_roupa("vestido")
+    add_categoria_roupa("calça")
+    # add_categoria_roupa("")
 
-    add_tipo_calcado("bota")
-    add_tipo_calcado("sandalia")
-    add_tipo_calcado("tenis")
-    # add_tipo_calcado("")
+    add_categoria_calcado("bota")
+    add_categoria_calcado("sandalia")
+    add_categoria_calcado("tenis")
+    # add_categoria_calcado("")
 
-    add_tipo_adereco("bolsa")
-    add_tipo_adereco("colar")
-    add_tipo_adereco("anel")
-    # add_tipo_adereco("")
+    add_categoria_adereco("bolsa")
+    add_categoria_adereco("colar")
+    add_categoria_adereco("anel")
+    # add_categoria_adereco("")
 
-    for o in Tipo_roupa.objects.all():
+    for o in Categoria_roupa.objects.all():
         print unicode(o)
 
-    for o in Tipo_calcado.objects.all():
+    for o in Categoria_calcado.objects.all():
         print unicode(o)
 
-    for o in Tipo_adereco.objects.all():
+    for o in Categoria_adereco.objects.all():
         print unicode(o)
 
-def add_tipo_roupa(n):
-    o = Tipo_roupa.objects.get_or_create(nome=n)[0]
+def add_categoria_roupa(n):
+    o = Categoria_roupa.objects.get_or_create(nome=n)[0]
     o.save()
     return o
 
-def add_tipo_calcado(n):
-    o = Tipo_calcado.objects.get_or_create(nome=n)[0]
+def add_categoria_calcado(n):
+    o = Categoria_calcado.objects.get_or_create(nome=n)[0]
     o.save()
     return o
 
-def add_tipo_adereco(n):
-    o = Tipo_adereco.objects.get_or_create(nome=n)[0]
+def add_categoria_adereco(n):
+    o = Categoria_adereco.objects.get_or_create(nome=n)[0]
     o.save()
     return o
 
